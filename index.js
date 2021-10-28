@@ -17,7 +17,7 @@ app.get('/', function(req, res){
     
     res.writeHead(200);
     res.end("<iframe src='./viewer.html?file=" + filepath + ".pdf'</iframe>")
-    //res.sendFile(__dirname + '/viewer.html?file=' + filepath + '.pdf');
+    //res.sendFile(__dirname + './viewer.html?file=' + filepath + '.pdf');
 });
 
 app.listen(3000, () => console.log("Server Listener"));
