@@ -22,7 +22,7 @@ const app = http.createServer(function(req, res){
     res.write("    <title>급여명세서</title>");
     res.write("</head>");
     res.write("<body>");
-    res.write(data);
+    res.write("<embed src='" + filepath + ".pdf'/>");
     res.write("</body>");
     res.write("</html>");
     res.end();
