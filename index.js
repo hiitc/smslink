@@ -14,7 +14,7 @@ const app = http.createServer(function(req, res){
     console.log(filepath);
 
     fs.readFile(filepath, 'utf8', function(err, data){
-        res.writeHead(200, {"Content-Type": "application/pdf; charset=utf-8"});
+        res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
         res.write("<!doctype html>");
         res.write("<head>");
         res.write("    <title>급여명세서</title>");
