@@ -14,18 +14,17 @@ const app = http.createServer(function(req, res){
     console.log(filepath);
 
     fs.readFile(filepath, 'utf8', function(err, data){
-        var template = '
-        <!doctype html>
-        <head>
-            <title>급여명세서</title>
-            <meta charset="utf-8">
-        </head>
-        <body>
-            ${data}
-        </body>
-        </html>
-        ';
-        res.end(template);
+        res.writeHead(200, {"Content-Type": "application/pdf; charset=utf-8"});
+        res.write("<!doctype html>");
+        res.write("<head>");
+        res.write("    <title>급여명세서</title>");
+        res.write("</head>");
+        res.write("<body>");
+        res.write(data);
+        res.write("</body>");
+        res.write("</html>");
+        
+        res.end();
     });
 });
 
