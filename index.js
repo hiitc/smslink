@@ -14,7 +14,17 @@ const app = http.createServer(function(req, res){
     console.log(filepath);
 
     fs.readFile(filepath, 'utf8', function(err, data){
-        var template = "<!doctype html><html><title>급여명세서</title><meta charset='utf-8'></head><body>${data}</body></html>";
+        var template = '
+        <!doctype html>
+        <head>
+            <title>급여명세서</title>
+            <meta charset="utf-8">
+        </head>
+        <body>
+            ${data}
+        </body>
+        </html>
+        ';
         res.end(template);
     });
 });
