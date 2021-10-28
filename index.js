@@ -4,7 +4,7 @@ var url = require('url');
 var express = require('express')
 var app = express();
 
-app = get(function(req, res){
+app.get(function(req, res){
     var _url = req.url
     var queryData = url.parse(_url, true).query;
     var corp = queryData.corp;
