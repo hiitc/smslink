@@ -15,7 +15,7 @@ app.get('/', function(req, res){
 
     console.log(filepath);
     
-    res.sendFile('./viewer.html?file=' + filepath);
+    res.sendFile(__dirname + '/viewer.html?file=' + filepath);
 });
 
 app.listen(3000, () => console.log("Server Listener"));
