@@ -14,7 +14,7 @@ var app = http.createServer(function(req, res){
     console.log(filepath);
     
     res.writeHead(200);
-    res.end(fs.readFileSync(__dirname + '/index.html?path=' + filepath));
+    res.end(fs.readFileSync(__dirname + '/viewer.html?file=' + filepath));
 });
 
 app.listen(3000, () => console.log("Server Listener"));
