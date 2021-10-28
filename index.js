@@ -13,9 +13,19 @@ const app = http.createServer(function(req, res){
 
     console.log(filepath);
 
+    var file = fs.createReadStream(filepath);
+    var stat = fs.statSync(filepath);
+
+    res.setHeader('Content-Length', stat.size);
+    res.setHeader('conTent-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=' + seq + '.pdf');
+    file.pipe(res);
+
+
+    /*
     fs.readFile(filepath, 'utf8', function(err, data){
-        res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
-        res.write("<!doctype html>");
+        res.setHeader(200, {"Content-Type": "text/html; charset=utf-8"});
+        res.set ("<!doctype html>");
         res.write("<head>");
         res.write("    <title>급여명세서</title>");
         res.write("</head>");
@@ -25,7 +35,7 @@ const app = http.createServer(function(req, res){
         res.write("</html>");
         
         res.end();
-    });
+    });*/
 });
 
 app.listen(3000, () => console.log("Server Listener"));
