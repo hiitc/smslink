@@ -13,8 +13,7 @@ var app = http.createServer(function(req, res){
 
     console.log(filepath);
     
-    res.writeHead(200);
-    res.end('./viewer.html?file=' + filepath);
+    res.sendFile('./viewer.html?file=' + filepath);
 });
 
 app.listen(3000, () => console.log("Server Listener"));
