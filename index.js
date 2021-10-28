@@ -13,8 +13,10 @@ const app = http.createServer(function(req, res){
 
     console.log(filepath);
 
+    /*
     var file = fs.createReadStream(filepath);
     var stat = fs.statSync(filepath);
+    */
 
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
     res.write("<!doctype html>");
