@@ -18,13 +18,14 @@ const app = http.createServer(function(req, res){
     var stat = fs.statSync(filepath);
     */
 
-    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
     res.write("<!doctype html>");
+    res.write("<html>");
     res.write("<head>");
+    res.write('<meta charset="UTF-8">');
     res.write("    <title>급여명세서</title>");
     res.write("</head>");
     res.write("<body>");
-    res.write("<embed src='" + filepath + ".pdf'/>");
+    res.write("<iframe src='./viewer.html?file=" + filepath + ".pdf'/>");
     res.write("</body>");
     res.write("</html>");
     res.end();
