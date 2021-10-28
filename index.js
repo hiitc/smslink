@@ -1,8 +1,9 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
+var app = express();
 
-var app = http.createServer(function(req, res){
+app.get('/', function(req, res){
     var _url = req.url
     var queryData = url.parse(_url, true).query;
     var corp = queryData.corp;
