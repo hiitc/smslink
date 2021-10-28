@@ -1,8 +1,10 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
+var express = require('express')
+var app = express();
 
-const app = http.createServer(function(req, res){
+app = get(function(req, res){
     var _url = req.url
     var queryData = url.parse(_url, true).query;
     var corp = queryData.corp;
@@ -12,11 +14,6 @@ const app = http.createServer(function(req, res){
     var filepath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq;
 
     console.log(filepath);
-
-    /*
-    var file = fs.createReadStream(filepath);
-    var stat = fs.statSync(filepath);
-    */
 
     res.write("<!doctype html>");
     res.write("<html>");
@@ -29,22 +26,6 @@ const app = http.createServer(function(req, res){
     res.write("</body>");
     res.write("</html>");
     res.end();
-
-
-    /*
-    fs.readFile(filepath, 'utf8', function(err, data){
-        res.setHeader(200, {"Content-Type": "text/html; charset=utf-8"});
-        res.set ("<!doctype html>");
-        res.write("<head>");
-        res.write("    <title>급여명세서</title>");
-        res.write("</head>");
-        res.write("<body>");
-        res.write(data);
-        res.write("</body>");
-        res.write("</html>");
-        
-        res.end();
-    });*/
 });
 
 app.listen(3000, () => console.log("Server Listener"));
