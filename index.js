@@ -16,7 +16,7 @@ const app = http.createServer(function(req, res){
     var file = fs.createReadStream(filepath);
     var stat = fs.statSync(filepath);
 
-    res.setHeader(200, {'Content-Type': 'text/html; charset=utf-8'});
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
     res.write("<!doctype html>");
     res.write("<head>");
     res.write("    <title>급여명세서</title>");
