@@ -9,7 +9,7 @@ const app = http.createServer(function(req, res){
     var tname = queryData.tname;
     var wgroup = queryData.wgroup;
     var seq = queryData.seq;
-    var filepath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq + ".pdf";
+    var filepath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq;
 
     console.log(filepath);
 
@@ -18,7 +18,7 @@ const app = http.createServer(function(req, res){
 
     res.setHeader('Content-Length', stat.size);
     res.setHeader('conTent-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=' + seq + '.pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=' + seq);
     file.pipe(res);
 
 
