@@ -15,7 +15,7 @@ const app = http.createServer(function(req, res){
 
     fs.readFile(filepath, 'utf8', function(err, data){
         var template = "<!doctype html><html><title>급여명세서</title><meta charset='utf-8'></head><body>${data}</body></html>";
-        res.send(template);
+        res.end(template);
     });
 });
 
