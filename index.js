@@ -1,14 +1,23 @@
+const { response } = require("express");
 const express = require("express");
-const path = require("path");
+const fs = require('fs');
 
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("Hello SMS-LINK");
+    var corp = req.query.corp;
+    var tname = req.query.tname;
+    var wgroup = req.query.wgroup;
+    var seq = req.query.seq;
 
-    var linkAddr = "/home/ftp-user/ftp-file/HWANGBO/L_LABOR_BASIC/L001/195124.pdf";
+    var filepath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq + ".pdf";
 
-    console.log(linkAddr);
+    console.log(filepath);
+
+    fs.readFile(filepath, 'utf-8', function(err, data){
+        var template = "<!doctype html><html><title>급여명세서</title><meta charset='utf-8'></head><body>${data}</body></html>";
+        response.end(template);
+    });
 });
 
 app.listen(3000, () => console.log("Server Listener"));
