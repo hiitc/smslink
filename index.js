@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
     fs.readFile(filepath, 'utf-8', function(err, data){
         var template = "<!doctype html><html><title>급여명세서</title><meta charset='utf-8'></head><body>${data}</body></html>";
-        response.end(template);
+        res.send(template);
     });
 });
 
