@@ -16,7 +16,7 @@ app.get('/', function(req, res){
     console.log(filepath);
     
     res.writeHead(200);
-    res.end('<iframe src="web/viewer.html?file=30244.pdf" style="width:500px; height:300px; border:1px solid #00c;"></iframe>');
+    res.end('<iframe src="./web/viewer.html?file=30244.pdf" style="width:100%; height:920px; border:1px solid #00c;"></iframe>');
     //res.sendFile(__dirname + './viewer.html?file=' + filepath + '.pdf');
 });
 
