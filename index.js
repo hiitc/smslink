@@ -30,10 +30,11 @@ app.get('/', function(req, res){
 //	var fpath = "30244.pdf";
 
 	fs.readFileSync(fpath, "utf-8", function(err, data){
-		res.writeHead(200, {"Content-Type": "application/octet-stream"});
-		res.writeHead({"Content-Disposition": contentDisposition(fpath)});
-		res.write(data);
-		res.end();
+		//res.writeHead(200, {"Content-Type": "application/octet-stream"});
+		//res.writeHead({"Content-Disposition": contentDisposition(fpath)});
+		//res.write(data);
+		//res.end();
+		res.download(fpath);
 	});
 })
 
