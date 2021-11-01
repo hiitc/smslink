@@ -1,5 +1,6 @@
 var fs = require('fs')
 var express = require('express')
+var contentDis = require('content-disposition')
 var app = express()
 
 /*
@@ -28,8 +29,9 @@ app.get('/', function(req, res){
 	var fpath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq
 //	var fpath = "30244.pdf";
 
-	fs.readFile(fpath, function(err, data){
+	fs.readFileSync(fpath, "utf-8", function(err, data){
 		res.writeHead(200, {"Content-Type": "application/octet-stream"});
+		res.writeHead(200, {"Content-Disposition": contentDis(fpath)});
 		res.write(data);
 		res.end();
 	});
