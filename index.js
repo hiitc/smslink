@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 	fs.createReadStream(fpath).pipe(fs.createWriteStream('./web/' + seq + '.pdf'));
 
-	res.sendFile(__dirname + "index.html");// + seq + ".pdf");
+	res.sendFile(__dirname + "/index.html");// + seq + ".pdf");
 
 	console.log(fpath);
 })
