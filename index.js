@@ -31,7 +31,7 @@ app.get('/', function(req, res){
 
 	fs.readFileSync(fpath, "utf-8", function(err, data){
 		res.writeHead(200, {"Content-Type": "application/octet-stream"});
-		res.writeHead(200, {"Content-Disposition": contentDis(fpath)});
+		res.writeHead({"Content-Disposition": contentDis(fpath)});
 		res.write(data);
 		res.end();
 	});
