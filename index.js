@@ -29,7 +29,7 @@ app.get('/', function(req, res){
 	var fpath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq
 //	var fpath = "30244.pdf";
 
-	fs.readFileSync(fpath, "utf-8", function(err, data){
+	fs.readFile(fpath, "utf-8", function(err, data){
 		//res.setHeader("Content-Type", "application/octet-stream");
 		//res.setHeader("Content-Disposition", contentDisposition(fpath));
 		res.writeHead(200, {"Content-Type": "application/pdf"
