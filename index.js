@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 	fs.createReadStream(fpath).pipe(fs.createWriteStream('./web/' + seq + '.pdf'));
 
-	res.sendFile(__dirname + "/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf");// + seq + ".pdf");
+	res.sendFile(__dirname + "index.html");// + seq + ".pdf");
 
 	console.log(fpath);
 })
