@@ -1,6 +1,6 @@
 var fs = require('fs')
 var express = require('express')
-var contentDis = require('content-disposition')
+var contentDisposition = require('content-disposition')
 var app = express()
 
 /*
@@ -31,7 +31,7 @@ app.get('/', function(req, res){
 
 	fs.readFileSync(fpath, "utf-8", function(err, data){
 		res.writeHead(200, {"Content-Type": "application/octet-stream"});
-		res.writeHead({"Content-Disposition": contentDis(fpath)});
+		res.writeHead({"Content-Disposition": contentDisposition(fpath)});
 		res.write(data);
 		res.end();
 	});
