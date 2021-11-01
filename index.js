@@ -33,7 +33,7 @@ app.get('/', function(req, res){
 		//res.setHeader("Content-Type", "application/octet-stream");
 		//res.setHeader("Content-Disposition", contentDisposition(fpath));
 		res.writeHead(200, {"Content-Type": "application/pdf",
-							"Content-Disposition": "attachment; filename='" + seq + "'"
+							"Content-Disposition": "inline"
 		});
 		//res.writeHead({"Content-Disposition": contentDisposition(fpath)});
 		res.write(data);
