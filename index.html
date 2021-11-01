@@ -1,16 +1,13 @@
-<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <!DOCTYPE html>
 <html>
-
   <head>
-    <link rel="stylesheet" href="style.css">
-    
+    <meta charset="UTF-8">
   </head>
 
   <body>
-    <a href="./web/viewer.html?file=30244.pdf">Hello Plunker!</a>
-    
-    <iframe src="./web/viewer.html?file=30244.pdf" style="width:500px; height:300px; border:1px solid #00c;"></iframe>
+    <div id="example1"></div>
+    <script src="./pdfobject.js"></script>
+    <script>PDFObject.embed("./compressed.tracemonkey-pldi-09.pdf", "#example1");</script>
   </body>
 
 </html>
