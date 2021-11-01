@@ -32,8 +32,7 @@ app.get('/', function(req, res){
 	fs.readFile(fpath, "utf-8", function(err, data){
 		//res.setHeader("Content-Type", "application/octet-stream");
 		//res.setHeader("Content-Disposition", contentDisposition(fpath));
-		res.writeHead(200, {"Content-Type": "application/pdf",
-							"Content-Disposition": "inline"
+		res.writeHead(200, {"Content-Type": "application/pdf"
 		});
 		//res.writeHead({"Content-Disposition": contentDisposition(fpath)});
 		res.write(data);
