@@ -1,3 +1,4 @@
+var fs = require('fs')
 var express = require('express')
 var app = express()
 
@@ -9,7 +10,9 @@ app.get('/', function(req, res){
 
 	var fpath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq
 
-	res.sendFile(__dirname + "/web/viewer.html?file=" + fpath);
+	fs.createReadStream(fpath).pipe(fs.createWriteStream('./' + seq + '.pdf'));
+
+	res.sendFile(__dirname + "/web/viewer.html?file=" + seq + ".pdf");
 
 	console.log(fpath);
 })
