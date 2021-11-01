@@ -9,9 +9,7 @@ app.get('/', function(req, res){
 
 	var fpath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq
 
-	res.append("<script src='script.js'></script>");
-	res.append("<iframe src='" + fpath + "' id='iframeid'></iframe>");
-	res.send();
+	res.sendFile(__dirname + "/index.html");//?" + fpath);
 
 	console.log(fpath);
 })
