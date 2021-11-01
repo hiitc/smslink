@@ -29,7 +29,7 @@ app.get('/', function(req, res){
 //	var fpath = "30244.pdf";
 
 	fs.readFile(fpath, function(err, data){
-		res.writeHead(200, {"Content-Type": "application/pdf"});
+		res.writeHead(200, {"Content-Type": "application/octet-stream"});
 		res.write(data);
 		res.end();
 	});
