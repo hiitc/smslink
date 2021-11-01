@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "express": "^4.17.1"
   }
+=======
+  "name": "smslink",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiitc/smslink.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiitc/smslink/issues"
+  },
+  "homepage": "https://github.com/hiitc/smslink#readme",
+  "description": ""
+>>>>>>> f0e576ae52039090c13f0c13c107d933e298658c
 }
