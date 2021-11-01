@@ -10,9 +10,9 @@ app.get('/', function(req, res){
 
 	var fpath = "/home/ftp-user/ftp-file/" + corp + "/" + tname + "/" + wgroup + "/" + seq
 
-	fs.createReadStream(fpath).pipe(fs.createWriteStream('./' + seq + '.pdf'));
+	fs.createReadStream(fpath).pipe(fs.createWriteStream('./web/' + seq + '.pdf'));
 
-	res.sendFile(__dirname + "/web/viewer.html?file=" + seq + ".pdf");
+	res.sendFile(__dirname + "/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf");// + seq + ".pdf");
 
 	console.log(fpath);
 })
