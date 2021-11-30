@@ -19,18 +19,25 @@
             return sval;
         }
 
-        var enc_text = getParam("encrypto")
+        var dec_text = getParam("encrypto");
 
-        fetch("http://ec2-15-165-75-16.ap-northeast-2.compute.amazonaws.com/encdec_api/enc?enc_text="+enc_text)
-            .then((response) => console.log(response)
-        );
+        let response = fetch("http://ec2-15-165-75-16.ap-northeast-2.compute.amazonaws.com:3000/dec?dec_text="+dec_text);
+        
+        if (response.ok) {
+            var parm = response.text();
+            console.log(parm);
+            document.writeln('<iframe src="../efs/' + parm + '.html" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+        } else {
+            alert("HTTP-ERROR : " + response.status);
+        }
 
 
         //if (getParam("tag") == "html") {
-            document.writeln('<iframe src="../efs/' + getParam("corp") + '/' + getParam("tname") + '/' + getParam("wgroup") + '/' + getParam("seq") + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+            
         //} else {
         //    document.writeln('<iframe src="web/viewer.html?file=../../efs/' + getParam("corp") + '/' + getParam("tname") + '/' + getParam("wgroup") + '/' + getParam("seq") + '" style="width:100%; height:960px; border:1px solid #00c;"></iframe>');
         //}
+
 
     </script>
 </body>
