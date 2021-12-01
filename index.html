@@ -6,31 +6,16 @@
     <title>하이정보기술 웹서비스</title>
 </head>
 <body>
+    <script src="encdec_api.js"></script>
     <script language="javascript">
-        function getParam(sname) {
-            var params = location.search.substr(location.search.indexOf("?") + 1);
-            var sval = "";
-            
-            params = params.split("&");
-            for (var i = 0; i < params.length; i++) {
-                temp = params[i].split("=");
-                if ([temp[0]] == sname) { sval = temp[1]; }
-            }
-            return sval;
-        }
 
-        var dec_text = getParam("encrypto");
-
-        let response = fetch("http://ec2-15-165-75-16.ap-northeast-2.compute.amazonaws.com:3000/dec?dec_text="+dec_text);
-        
-        if (response.ok) {
-            var parm = response.text();
-            console.log(parm);
-            document.writeln('<iframe src="../efs/' + parm + '.html" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
-        } else {
-            alert("HTTP-ERROR : " + response.status);
-        }
-
+        alert("Hello");
+        var dec_text = getParam("result");
+        alert(dec_text);
+        //var pay_stub = decrypt(dec_text)
+        //alert(dec_text)
+        //document.writeln('<iframe src="../efs/' + dec_text + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+        //document.writeln(dec_text);
 
         //if (getParam("tag") == "html") {
             

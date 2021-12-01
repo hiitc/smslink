@@ -1,6 +1,6 @@
 const express = require('express')
-const app = express()
 const crypto = require('crypto')
+const app = express()
 const ENCRYPTION_KEY = 'aow48et9ua9(346ihasdYSDGl3498sul'
 const IV_LENGTH = 16
 
@@ -9,23 +9,43 @@ app.get('/', (req, res) => {
 })
 
 app.get('/enc', (req, res) => {
-    const iv = crypto.randomBytes(IV_LENGTH)
-    const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv,)
+    var iv = crypto.randomBytes(IV_LENGTH)
+    const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv)
     const encrypted = cipher.update(req.query.enc_text)
 
-    console.log(iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex'))
-    //res.send(iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex'))
+    var dec_text = iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex')
+
+    console.log(dec_text)
+    res.send(dec_text)
 })
 
-function decrypt(text) {
-    const textParts = text.split(':')
-    const iv = Buffer.from(textParts.shift(), 'hex')
+app.get('/dec', (req, res) => {
+    var parm = req.query.dec_text
+    var textParts = parm.split(':')
+    var iv = Buffer.from(textParts.shift(), 'hex')
     const encryptedText = Buffer.from(textParts.join(':'), 'hex')
-    const decipher = crypto.createDecipheriv('aes-256-cbc',Buffer.from(ENCRYPTION_KEY),iv,)
-    const decrypted = decipher.update(encryptedText)
-  
-    return Buffer.concat([decrypted, decipher.final()]).toString()
-  }
+    const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv)
+    var decrypted = decipher.update(encryptedText)
+    decrypted = Buffer.concat([decrypted, decipher.final()]).toString()
+
+    console.log(decrypted)
+    res.writeHead("200", {"Content-Type": "text/html; charset=EUC-KR"});
+    res.write('<iframe src="../efs/' + decrypted + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+    res.end()
+})
+
+function getParam(sname) {
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+    var sval = "";
+    
+    params = params.split("&");
+    for (var i = 0; i < params.length; i++) {
+        temp = params[i].split("=");
+        if ([temp[0]] == sname) { sval = temp[1]; }
+    }
+    return sval;
+}
+
 
 app.listen(3000, () => {
     console.log('Node Server Started!!!')
