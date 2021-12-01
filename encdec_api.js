@@ -30,7 +30,7 @@ app.get('/dec', (req, res) => {
     decrypted = Buffer.concat([decrypted, decipher.final()]).toString()
 
     console.log(decrypted)
-    var data = fs.readFileSync(decrypted, 'ansi');
+    var data = fs.readFileSync(decrypted);
     console.log(data)
     res.writeHead("200", {"Content-Type": "text/html; charset=EUC-KR"});
     //res.write('<iframe src="efs/' + decrypted + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
