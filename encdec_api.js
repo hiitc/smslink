@@ -14,7 +14,7 @@ app.get('/enc', (req, res) => {
     const encrypted = cipher.update(req.query.enc_text)
 
     console.log(iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex'))
-    res.send(iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex'))
+    //res.send(iv.toString('hex') + ':' + Buffer.concat([encrypted, cipher.final()]).toString('hex'))
 })
 
 function decrypt(text) {
