@@ -1,5 +1,6 @@
 const express = require('express')
 const crypto = require('crypto')
+const fs = require('fs')
 const app = express()
 const ENCRYPTION_KEY = 'aow48et9ua9(346ihasdYSDGl3498sul'
 const IV_LENGTH = 16
@@ -29,8 +30,11 @@ app.get('/dec', (req, res) => {
     decrypted = Buffer.concat([decrypted, decipher.final()]).toString()
 
     console.log(decrypted)
+    var data = fs.readFileSync(decrypted, 'euc-kr');
+    console.log(data)
     res.writeHead("200", {"Content-Type": "text/html; charset=EUC-KR"});
-    res.write('<iframe src="efs/' + decrypted + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+    //res.write('<iframe src="efs/' + decrypted + '" style="width:100%; height:1500px; border:1px solid #00c;"></iframe>');
+    res.write(data)
     res.end()
 })
 
